@@ -71,11 +71,11 @@
         </tr>
         <tr>
           <td class="risk intermediate-risk"></td>
-          <td>Risc mitjà</td>
+          <td>Risc mig</td>
         </tr>
         <tr>
           <td class="risk intermediate-high-risk"></td>
-          <td>Risc mitjà-alt</td>
+          <td>Risc mig-alt</td>
         </tr>
         <tr>
           <td class="risk high-risk"></td>
