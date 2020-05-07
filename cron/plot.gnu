@@ -4,7 +4,7 @@ set title font "Helvetica,20"
 
 set xrange[0:600]
 set yrange[0:5]
-set samples 1000
+set samples 400
 #unset colorbox
 
 set multiplot layout 3,3
