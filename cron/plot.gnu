@@ -15,25 +15,40 @@ min(a, b) = (a < b ? a : b)
 
 # The different colored areas correspond to the classification of the EPG values defined on page 8 at https://biocomsc.upc.edu/en/shared/20200506_report_web_51.pdf
 
-set title "Terres de l'ebre"
+lastUpdated = system("tail -n 1 ".filesPrefix."TerresDeLEbre.dat | awk '{print $1;}'")
+set title "Terres de l'Ebre\n{/*0.4 Última dada (punt negre): ".lastUpdated."}"
 plot 6*x w filledcurve y1=0 lt rgb "#ff9494", 100/x w filledcurve y1=0 lt rgb "#ffe494", 70/x w filledcurve y1=0 lt rgb "#dbff94", 30/x w filledcurve y1=0 lt rgb "#a0ff94", filesPrefix.'TerresDeLEbre.dat' u 2:3 w lp pt 6 lt rgb "black", "< tail -n 1 ".filesPrefix."TerresDeLEbre.dat" u 2:3 w lp pt 7 lt rgb "black"
 
-set title "Camp de Tarragona"
+lastUpdated = system("tail -n 1 ".filesPrefix."CampDeTarragona.dat | awk '{print $1;}'")
+set title "Camp de Tarragona\n{/*0.4 Última dada (punt negre): ".lastUpdated."}"
 plot 6*x w filledcurve y1=0 lt rgb "#ff9494", 100/x w filledcurve y1=0 lt rgb "#ffe494", 70/x w filledcurve y1=0 lt rgb "#dbff94", 30/x w filledcurve y1=0 lt rgb "#a0ff94", filesPrefix.'CampDeTarragona.dat' u 2:3 w lp pt 6 lt rgb "black", "< tail -n 1 ".filesPrefix."CampDeTarragona.dat" u 2:3 w lp pt 7 lt rgb "black"
 
-set title "Alt Pirineu, Aran"
+lastUpdated = system("tail -n 1 ".filesPrefix."AltPirineuAran.dat | awk '{print $1;}'")
+set title "Alt Pirineu, Aran\n{/*0.4 Última dada (punt negre): ".lastUpdated."}"
 plot 6*x w filledcurve y1=0 lt rgb "#ff9494", 100/x w filledcurve y1=0 lt rgb "#ffe494", 70/x w filledcurve y1=0 lt rgb "#dbff94", 30/x w filledcurve y1=0 lt rgb "#a0ff94", filesPrefix.'AltPirineuAran.dat' u 2:3 w lp pt 6 lt rgb "black", "< tail -n 1 ".filesPrefix."AltPirineuAran.dat" u 2:3 w lp pt 7 lt rgb "black"
 
-set title "Lleida"
+lastUpdated = system("tail -n 1 ".filesPrefix."Lleida.dat | awk '{print $1;}'")
+set title "Lleida\n{/*0.4 Última dada (punt negre): ".lastUpdated."}"
 plot 6*x w filledcurve y1=0 lt rgb "#ff9494", 100/x w filledcurve y1=0 lt rgb "#ffe494", 70/x w filledcurve y1=0 lt rgb "#dbff94", 30/x w filledcurve y1=0 lt rgb "#a0ff94", filesPrefix.'Lleida.dat' u 2:3 w lp pt 6 lt rgb "black", "< tail -n 1 ".filesPrefix."Lleida.dat" u 2:3 w lp pt 7 lt rgb "black"
 
-set title "Girona"
+lastUpdated = system("tail -n 1 ".filesPrefix."Girona.dat | awk '{print $1;}'")
+set title "Girona\n{/*0.4 Última dada (punt negre): ".lastUpdated."}"
 plot 6*x w filledcurve y1=0 lt rgb "#ff9494", 100/x w filledcurve y1=0 lt rgb "#ffe494", 70/x w filledcurve y1=0 lt rgb "#dbff94", 30/x w filledcurve y1=0 lt rgb "#a0ff94", filesPrefix.'Girona.dat' u 2:3 w lp pt 6 lt rgb "black", "< tail -n 1 ".filesPrefix."Girona.dat" u 2:3 w lp pt 7 lt rgb "black"
 
-set title "Catalunya central"
+lastUpdated = system("tail -n 1 ".filesPrefix."CatalunyaCentral.dat | awk '{print $1;}'")
+set title "Catalunya central\n{/*0.4 Última dada (punt negre): ".lastUpdated."}"
 plot 6*x w filledcurve y1=0 lt rgb "#ff9494", 100/x w filledcurve y1=0 lt rgb "#ffe494", 70/x w filledcurve y1=0 lt rgb "#dbff94", 30/x w filledcurve y1=0 lt rgb "#a0ff94", filesPrefix.'CatalunyaCentral.dat' u 2:3 w lp pt 6 lt rgb "black", "< tail -n 1 ".filesPrefix."CatalunyaCentral.dat" u 2:3 w lp pt 7 lt rgb "black"
 
-set title "Barcelona"
-plot 6*x w filledcurve y1=0 lt rgb "#ff9494", 100/x w filledcurve y1=0 lt rgb "#ffe494", 70/x w filledcurve y1=0 lt rgb "#dbff94", 30/x w filledcurve y1=0 lt rgb "#a0ff94", filesPrefix.'Barcelona.dat' u 2:3 w lp pt 6 lt rgb "black", "< tail -n 1 ".filesPrefix."Barcelona.dat" u 2:3 w lp pt 7 lt rgb "black"
+lastUpdated = system("tail -n 1 ".filesPrefix."BarcelonaCiutat.dat | awk '{print $1;}'")
+set title "Barcelona Ciutat\n{/*0.4 Última dada (punt negre): ".lastUpdated."}"
+plot 6*x w filledcurve y1=0 lt rgb "#ff9494", 100/x w filledcurve y1=0 lt rgb "#ffe494", 70/x w filledcurve y1=0 lt rgb "#dbff94", 30/x w filledcurve y1=0 lt rgb "#a0ff94", filesPrefix.'BarcelonaCiutat.dat' u 2:3 w lp pt 6 lt rgb "black", "< tail -n 1 ".filesPrefix."BarcelonaCiutat.dat" u 2:3 w lp pt 7 lt rgb "black"
+
+lastUpdated = system("tail -n 1 ".filesPrefix."MetropolitaSud.dat | awk '{print $1;}'")
+set title "Metropolità Sud\n{/*0.4 Última dada (punt negre): ".lastUpdated."}"
+plot 6*x w filledcurve y1=0 lt rgb "#ff9494", 100/x w filledcurve y1=0 lt rgb "#ffe494", 70/x w filledcurve y1=0 lt rgb "#dbff94", 30/x w filledcurve y1=0 lt rgb "#a0ff94", filesPrefix.'MetropolitaSud.dat' u 2:3 w lp pt 6 lt rgb "black", "< tail -n 1 ".filesPrefix."MetropolitaSud.dat" u 2:3 w lp pt 7 lt rgb "black"
+
+lastUpdated = system("tail -n 1 ".filesPrefix."MetropolitaNord.dat | awk '{print $1;}'")
+set title "Metropolità Nord\n{/*0.4 Última dada (punt negre): ".lastUpdated."}"
+plot 6*x w filledcurve y1=0 lt rgb "#ff9494", 100/x w filledcurve y1=0 lt rgb "#ffe494", 70/x w filledcurve y1=0 lt rgb "#dbff94", 30/x w filledcurve y1=0 lt rgb "#a0ff94", filesPrefix.'MetropolitaNord.dat' u 2:3 w lp pt 6 lt rgb "black", "< tail -n 1 ".filesPrefix."MetropolitaNord.dat" u 2:3 w lp pt 7 lt rgb "black"
 
 unset multiplot

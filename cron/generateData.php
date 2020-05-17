@@ -10,7 +10,10 @@ $HABITANTS = [
   "Terres de l'Ebre" => 176817,
   "Girona" => 861753,
   "Catalunya Central" => 526959,
-  "Barcelona" => 5050190
+  "Barcelona" => 5050190,
+  "Barcelona Ciutat" => 1693449,
+  "Metropolità Sud" => 1370709,
+  "Metropolità Nord" => 1986032,
 ];
 
 $CODENAME = [
@@ -20,7 +23,10 @@ $CODENAME = [
   "Terres de l'Ebre" => "TerresDeLEbre",
   "Girona" => "Girona",
   "Catalunya Central" => "CatalunyaCentral",
-  "Barcelona" => "Barcelona"
+  "Barcelona" => "Barcelona",
+  "Barcelona Ciutat" => "BarcelonaCiutat",
+  "Metropolità Sud" => "MetropolitaSud",
+  "Metropolità Nord" => "MetropolitaNord",
 ];
 
 function getSumDay($originalDay, $translation, &$dataRegio) {
@@ -69,8 +75,6 @@ foreach ($dataPerRegio as $regio => $dataRegio) {
     if ($date > $newestDay) $newestDay = $date;
   }
 
-  $newestDay->sub(new DateInterval("P1D"));
-
   $rhos = [];
 
   for ($currentDate = (clone $oldestDay)->add(new DateInterval("P7D")); $currentDate < $newestDay; $currentDate->add(new DateInterval("P1D"))) {
@@ -112,7 +116,7 @@ foreach ($dataPerRegio as $regio => $dataRegio) {
     $rhoAverage /= $rhoCount;
 
     $summary[$regio][] = [
-      "data" => $currentDate->format("c"),
+      "data" => $currentDate->format("d/m/y"),
       "ia14" => (isset($HABITANTS[$regio]) ? $sum*(1e5/$HABITANTS[$regio]) : null),
       "rho7" => $rhoAverage
     ];

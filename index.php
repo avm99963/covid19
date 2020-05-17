@@ -8,6 +8,7 @@
     <style>
     body {
       font-family: 'Helvetica', 'Arial', sans-serif;
+      padding-bottom: 200px;
     }
 
     .graphs {
