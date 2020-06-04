@@ -44,13 +44,14 @@ function getSumDay($originalDay, $translation, &$dataRegio) {
 }
 
 function query($soql) {
-  $raw = file_get_contents("https://analisi.transparenciacatalunya.cat/resource/xuwf-dxjd.json?\$query=".urlencode($soql));
+  $url = "https://analisi.transparenciacatalunya.cat/resource/xuwf-dxjd.json?\$query=".urlencode($soql);
+  $raw = file_get_contents($url);
   return json_decode($raw, true);
 }
 
 $data = query("SELECT data, regiosanitariadescripcio AS regio, sum(numcasos) AS sum_numcasos
 WHERE
-  resultatcoviddescripcio = 'Positiu' AND
+  resultatcoviddescripcio = 'Positiu PCR' AND
   regiosanitariadescripcio <> 'No classificat'
 GROUP BY regiosanitariadescripcio, data
 ORDER BY data ASC, regiosanitariadescripcio");
