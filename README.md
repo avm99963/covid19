@@ -4,11 +4,11 @@ This is the code for https://covid-19.sandbox.avm99963.com, which contains graph
 **DISCLAIMER**: The data shown in the website might be wrong due to a wrong implementation.
 
 ## Installation
-This software is meant to be used with Apache2 in order to serve a website including the last Covid-19 data.
+This software is meant to be used with Apache2 in order to serve a static website including the latest Covid-19 data.
 
 To install it, follow these steps:
 
-1. Clone this repo in a web directory by running `git clone "ssh://avm99963@gerrit.avm99963.com:29418/covid19"`.
+1. Clone this repo in a web directory by running `git clone "https://gerrit.avm99963.com/covid19"`.
 2. Set up a cron script which sets the working directory to `covid19/cron` and runs the `bash generate.bash` command every day early in the morning.
    *** promo
    **Note:** For this, you can run `crontab -e` and place the following line at the end of the document: `0 2 * * * (cd /path/to/covid19/cron/ && bash generate.bash)`
@@ -28,3 +28,4 @@ This is what each file does:
 * `cron/generate.bash`: a Bash script which orchestrates all the other programs in the folder in order to generate the graphs.
 * `cron/generateData.php`: a PHP script which extracts the Covid-19 data from the *Generalitat de Catalunya*'s API and analyzes that data to generate the ρ<sub>7</sub> and IA<sub>14</sub> values needed by `cron/generateGraphs.gnu`.
 * `cron/generateGraphs.gnu`: a gnuplot script which generates the graphs with the data which has been provided by the `cron/generateData.php`. It uses the helper script `cron/plot.gnu`.
+* `output` folder: a folder created by the `generate.bash` script where the generated graphs are saved.
