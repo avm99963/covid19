@@ -2,7 +2,7 @@ set xlabel "Casos actius per 10^5 habitants"
 set ylabel "Mitjana taxa de creixement darrers 7 dies"
 set title font "Helvetica,20"
 
-set xrange[0:410]
+set xrange[0:500]
 set yrange[0:5]
 set samples 400
 
