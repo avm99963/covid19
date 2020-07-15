@@ -58,7 +58,8 @@ WHERE
   resultatcoviddescripcio = 'Positiu PCR' AND
   regiosanitariadescripcio <> 'No classificat'
 GROUP BY regiosanitariadescripcio, data
-ORDER BY data ASC, regiosanitariadescripcio");
+ORDER BY data ASC, regiosanitariadescripcio
+LIMIT 50000");
 
 // Fem un array que tindrà com a elements un array per cada regió amb el
 // contingut de totes les files d'aquella regió
