@@ -5,6 +5,14 @@ It can also be used to generate risk graphs for custom areas by defining these a
 
 **DISCLAIMER**: The data shown in the website might be wrong due to a wrong implementation.
 
+## Requirements
+These programs should be installed in order to generate the graphs:
+
+* PHP (at least version 7)
+* gnuplot (at least version 5.2)
+
+Optionally, if you want to serve the graphs publicly, you also need Apache2 or another web server.
+
 ## Installation
 This software is meant to be used with Apache2 in order to serve a static website including the latest Covid-19 data.
 
@@ -15,6 +23,7 @@ To install it, follow these steps:
    *** promo
    **Note:** For this, you can run `crontab -e` and place the following line at the end of the document: `0 2 * * * (cd /path/to/covid19/cron/ && bash generate.bash)`
    ***
+3. *(Only if you're publishing the graphs with a web server)* If Apache2 doesn't have the `AllowOverride All` directive set, or you're using another web server, make sure the `cron` folder and its contents are not accessible from the Internet by denying access to it.
 
 Each day, the `generate.bash` script will generate the graphs at the `covid19/output` folder.
 
