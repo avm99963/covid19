@@ -1,6 +1,8 @@
 # covid-19
 This is the code for https://covid-19.sandbox.avm99963.com, which contains graphs which determine the level of risk of each Catalan health area due to the COVID-19, based on the work of the [BIOCOMSC](https://biocomsc.upc.edu/en/covid-19/daily-report) group at the Polytechnic University of Catalonia (UPC).
 
+It can also be used to generate risk graphs for custom areas by defining these areas in the `config/customAreas.php` file.
+
 **DISCLAIMER**: The data shown in the website might be wrong due to a wrong implementation.
 
 ## Installation
@@ -26,6 +28,10 @@ This is what each file does:
 * `index.html`: a web accessible document which includes a disclaimer text, a key for the graphs, and the generated graphs themselves.
 * `cron` folder: a non-web accessible folder which contains programs which ultimately generate the graphs.
 * `cron/generate.bash`: a Bash script which orchestrates all the other programs in the folder in order to generate the graphs.
-* `cron/generateData.php`: a PHP script which extracts the Covid-19 data from the *Generalitat de Catalunya*'s API and analyzes that data to generate the ρ<sub>7</sub> and IA<sub>14</sub> values needed by `cron/generateGraphs.gnu`.
+* `cron/generateData.php`: a PHP script which extracts the Covid-19 data from the *Generalitat de Catalunya*'s API and analyzes that data to generate the ρ<sub>7</sub> and IA<sub>14</sub> values needed by `cron/generateGraphs.gnu` to generate the graphs for each health area.
 * `cron/generateGraphs.gnu`: a gnuplot script which generates the graphs with the data which has been provided by the `cron/generateData.php`. It uses the helper script `cron/plot.gnu`.
+* `cron/generateCustomData.php`: a PHP script analogous to `cron/generateData.php` which generates the data for custom areas defined in `config/customAreas.php`.
+* `cron/generateCustomGraph.gnu`: a PHP script analogous to `cron/generateGraphs.gnu` which generates the graph of a custom area using the data provided by the previous script.
+* `config/config.php`: a file where general settings can be set.
+* `config/customAreas.php`: a file where the custom areas can be defined.
 * `output` folder: a folder created by the `generate.bash` script where the generated graphs are saved.
