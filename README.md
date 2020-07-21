@@ -6,7 +6,7 @@ It can also be used to generate risk graphs for custom areas by defining these a
 **DISCLAIMER**: The data shown in the website might be wrong due to a wrong implementation.
 
 ## Requirements
-These programs should be installed in order to generate the graphs:
+Only \*NIX machines (essentially a PC with a Linux distro or a Mac) are supported. These programs should be installed in order to be able to generate the graphs:
 
 * PHP (at least version 7)
 * gnuplot (at least version 5.2)
