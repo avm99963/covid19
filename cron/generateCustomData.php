@@ -48,8 +48,11 @@ if (isset($conf["customAreas"])) {
     $file = tmpfile();
     $fileName = stream_get_meta_data($file)['uri'];
 
-    foreach ($summary as $row)
-      fwrite($file, $row["data"]." ".$row["ia14"]." ".$row["rho7"]."\n");
+    $i = 0;
+    foreach ($summary as $row) {
+      fwrite($file, $row["data"]." ".$row["ia14"]." ".$row["rho7"]." ".$i."\n");
+      ++$i;
+    }
 
     // Cridem al gnuplot perquè generi la gràfica
     shell_exec("gnuplot -c generateCustomGraph.gnu \"".escapeshellcmd($area["name"])."\" \"".escapeshellcmd($area["codename"])."\" \"".escapeshellcmd($fileName)."\"");

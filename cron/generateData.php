@@ -61,8 +61,11 @@ foreach ($dataPerRegio as $regio => $dataRegio) { // Per a cada regió
 foreach ($summary as $regio => $summaryRegio) {
   $file = fopen("/tmp/covid19graphgenerator-".$CODENAME[$regio].".dat", "w");
 
-  foreach ($summaryRegio as $row)
-    fwrite($file, $row["data"]." ".$row["ia14"]." ".$row["rho7"]."\n");
+  $i = 0;
+  foreach ($summaryRegio as $row) {
+    fwrite($file, $row["data"]." ".$row["ia14"]." ".$row["rho7"]." ".$i."\n");
+    ++$i;
+  }
 
   fclose($file);
 }
