@@ -28,7 +28,10 @@ if (isset($conf["customAreas"])) {
     // Demanem una llista del nombre de casos cada dia
     $data = query("SELECT data, sum(numcasos) AS sum_numcasos
     WHERE
-      resultatcoviddescripcio = 'Positiu PCR' AND
+      (
+        resultatcoviddescripcio = 'Positiu PCR' OR
+        resultatcoviddescripcio = 'Positiu TAR'
+      ) AND
       abscodi in(".implode(",", array_map(function($abs) { return "'".$abs."'"; }, $area["abs"])).")
     GROUP BY data
     ORDER BY data ASC
