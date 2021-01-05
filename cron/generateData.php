@@ -4,40 +4,42 @@ if (php_sapi_name() != "cli")
 
 // Font dels nombres d'habitants: https://catsalut.gencat.cat/web/.content/minisite/catsalut/proveidors_professionals/registres_catalegs/documents/poblacio-referencia.pdf
 $HABITANTS = [
-  "Alt Pirineu i Aran" => 67277,
+  "AltPirineuAran" => 67277,
   "Lleida" => 362850,
-  "Camp de Tarragona" => 607999,
-  "Terres de l'Ebre" => 176817,
+  "CampDeTarragona" => 607999,
+  "TerresDeLEbre" => 176817,
   "Girona" => 861753,
-  "Catalunya Central" => 526959,
+  "CatalunyaCentral" => 526959,
   "Barcelona" => 5050190,
-  "Barcelona Ciutat" => 1693449,
-  "Metropolità Sud" => 1370709,
-  "Metropolità Nord" => 1986032,
+  "BarcelonaCiutat" => 1693449,
+  "MetropolitaSud" => 1370709,
+  "MetropolitaNord" => 1986032,
 ];
 
 $CODENAME = [
-  "Alt Pirineu i Aran" => "AltPirineuAran",
-  "Lleida" => "Lleida",
-  "Camp de Tarragona" => "CampDeTarragona",
-  "Terres de l'Ebre" => "TerresDeLEbre",
-  "Girona" => "Girona",
-  "Catalunya Central" => "CatalunyaCentral",
-  "Barcelona" => "Barcelona",
-  "Barcelona Ciutat" => "BarcelonaCiutat",
-  "Metropolità Sud" => "MetropolitaSud",
-  "Metropolità Nord" => "MetropolitaNord",
+  "7100" => "AltPirineuAran",
+  "6100" => "Lleida",
+  "6200" => "CampDeTarragona",
+  "6300" => "TerresDeLEbre",
+  "6400" => "Girona",
+  "6700" => "CatalunyaCentral",
+  "7803" => "BarcelonaCiutat",
+  "7801" => "MetropolitaSud",
+  "7802" => "MetropolitaNord",
 ];
 
 require_once(__DIR__."/includes/generation.php");
 
 // Demanem una llista del nombre de casos cada dia a cada regió sanitària
-$data = query("SELECT data, regiosanitariadescripcio AS regio, sum(numcasos) AS sum_numcasos
+$data = query("SELECT data, regiosanitariacodi AS regio, sum(numcasos) AS sum_numcasos
 WHERE
-  resultatcoviddescripcio = 'Positiu PCR' AND
-  regiosanitariadescripcio <> 'No classificat'
-GROUP BY regiosanitariadescripcio, data
-ORDER BY data ASC, regiosanitariadescripcio
+  (
+    resultatcoviddescripcio = 'Positiu PCR' OR
+    resultatcoviddescripcio = 'Positiu TAR'
+  ) AND
+  regiosanitariacodi <> '0000'
+GROUP BY regiosanitariacodi, data
+ORDER BY data ASC, regiosanitariacodi
 LIMIT 50000");
 
 // Fem un array que tindrà com a elements un array per cada regió amb el
@@ -49,12 +51,14 @@ foreach ($data as $row) {
 }
 
 $summary = [];
-foreach ($dataPerRegio as $regio => $dataRegio) { // Per a cada regió
+foreach ($dataPerRegio as $regioRaw => $dataRegio) { // Per a cada regió
+  $regio = mb_strtolower($regioRaw);
+
   if (!in_array($regio, array_keys($CODENAME)))
     die("[fatal error] No tenim contemplada la regió '".$regio."'.\n");
 
   // Generem les dades
-  $summary[$regio] = generateSummary($dataRegio, $HABITANTS[$regio]);
+  $summary[$regio] = generateSummary($dataRegio, $HABITANTS[$CODENAME[$regio]]);
 }
 
 // Posem les dades a diversos fitxers per tal que les pugui llegir el gnuplot
