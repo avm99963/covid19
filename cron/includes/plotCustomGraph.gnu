@@ -3,7 +3,7 @@ set ylabel "Mitjana taxa de creixement darrers 7 dies"
 set title font "Helvetica,20"
 
 set yrange[0:5]
-set xrange[0:1800]
+set xrange[0:3500]
 set samples 400
 
 set key off
